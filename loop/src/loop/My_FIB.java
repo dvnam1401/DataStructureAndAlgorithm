@@ -1,23 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fc2;
+package loop;
 
 import java.math.BigInteger;
 
 /**
  *
- * @author Administrator
+ * @author vanna
  */
 public class My_FIB {
 
-    BigInteger fib3(int n) {
+    static BigInteger fib3(int n) {
         BigInteger f0, f1, f2;
         f0 = BigInteger.ONE;
         f1 = BigInteger.ONE;
-        for (int i = 2; i <= n; i++) {
+        for (int i = 0; i <= n; i++) {
             f2 = f1.add(f0);
             f0 = f1;
             f1 = f2;
@@ -25,7 +24,7 @@ public class My_FIB {
         return f1;
     }
 
-    long fib(int n) {
+    static long fib(int n) {
         if (n == 0 || n == 1) {
             return 1;
         } else {
@@ -33,22 +32,28 @@ public class My_FIB {
         }
     }
 
-    long fib1(int n) {
+    static long fib1(int n) {
         long[] f;
         f = new long[n + 1];
         f[0] = f[1] = 1;
-        for (int i = 2; i <= n; i++) {
+        for (int i = 0; i <= n; i++) {
             f[i] = f[i - 1] + f[i - 2];
         }
         return f[n];
     }
 
+    static long fib2(int n) {
+        long f0 = 1, f1 = 1, f2;
+        for (int i = 0; i <= n; i++) {
+            f2 = f1 + f0;
+            f0 = f1;
+            f1 = f2;
+        }
+        return f1;
+    }
+
     public static void main(String[] args) {
-        My_FIB m = new My_FIB();
         int n = 180;
-//        System.out.println("So tho tren dao thang thu " + n + " = " + m.fib(n));
-//        System.out.println(m.fib1(n));
-        System.out.println(m.fib3(n));
-            
+
     }
 }
