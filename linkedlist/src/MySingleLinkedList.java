@@ -119,20 +119,59 @@ public class MySingleLinkedList {
             }
         }
     }
-    // tính trung bình cộng
-    static double average() {
-        int sum = 0;
+
+    static int size() {
+        int size = 0;
         if (head == null) {
-            return sum;
+            return size;
         } else {
             Node p = head;
             while (p != null) {
-
+                size++;
+                p = p.getNext();
             }
         }
+        return size;
     }
+
+    // tính trung bình cộng
+    static double average() {
+        double sum = 0;
+        if (head == null) {
+            return sum;
+        } else {
+            return (double) sum() / size();
+        }
+    }
+
     // in số thứ k
+    static double printLocation(int k) {
+        Node p = head;
+        int count = 0;
+        while (p != null) {
+            if (count == k) {
+                return p.getData();
+            }
+            count++;
+            p = p.getNext();
+        }
+        return -1;
+    }
+
     // tính tổng các số ở vị trí chẵn (ban đầu là 1)
+    static double sumEven() {
+        Node p = head;
+        double sumEvenNumber = 0;
+        int count = 1;
+        while (p != null) {
+            if (count % 2 == 0) {
+                sumEvenNumber += p.getData();
+            }
+            count++;
+            p = p.getNext();
+        }
+        return sumEvenNumber;
+    }
 
     public static void main(String[] args) {
         add(2);
@@ -142,6 +181,6 @@ public class MySingleLinkedList {
         add(6);
         add(7);
         output();
-        System.out.println(lastNumber());
+        System.out.println(sumEven());
     }
 }
