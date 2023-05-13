@@ -149,14 +149,7 @@ public class MyStack {
         } else {
             System.out.println("\nIndexes do not exist");
         }
-
-        while (!temp.emptyS()) {
-            top = new Node(temp.top.getData(), top);
-            temp.top = temp.top.getNext();
-        }
-        if (!temp.emptyS()) {
-            System.out.println("Temp rong");
-        }
+        backup(temp);
     }
 
     private void insertLastIndex(int value) {
@@ -166,7 +159,7 @@ public class MyStack {
             while (!emptyS()) {
                 if (tempIndex == index) {
                     temp.push(pop());
-                    top = new Node(value, top);
+                    push(value);
                     break;
                 }
                 TEMPNUMBER = pop();
@@ -176,21 +169,18 @@ public class MyStack {
         } else {
             System.out.println("Khong co vi tri cuoi cung");
         }
-
-        while (!temp.emptyS()) {
-            top = new Node(temp.top.getData(), top);
-            temp.top = temp.top.getNext();
-        }
+        backup(temp);
     }
 
     public static void main(String[] args) {
         MyStack myStack = new MyStack();
         myStack.input();
         myStack.output();
-//        System.out.println("\nSum stack: " + myStack.sum());
-//        System.out.println("\nCount odd of stack: " + myStack.countOdd());
-//        System.out.println("\nMax number is: " + myStack.maxNumber());
-//        myStack.deleteLastElement();
+        System.out.println("\nSum stack: " + myStack.sum());
+        System.out.println("\nCount odd of stack: " + myStack.countOdd());
+        System.out.println("\nMax number is: " + myStack.maxNumber());
+        myStack.deleteLastElement();
+        myStack.insertWithIndex(100, 4);
         myStack.insertLastIndex(9);
         myStack.output();
     }
