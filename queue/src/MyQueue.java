@@ -61,6 +61,16 @@ public class MyQueue {
         System.out.println();
     }
 
+    public int size() {
+        int count = 0;
+        Node temp = head;
+        while (temp != null) {
+            count++;
+            temp = temp.getNext();
+        }
+        return count;
+    }
+
     public int sum() {
         int sumQueue = 0;
         Node temp = head;
@@ -111,17 +121,45 @@ public class MyQueue {
         while (temp.getNext() != tail) {
             temp = temp.getNext();
         }
+        temp.setNext(null);
         tail = temp;
-        tail.getNext() = null;
     }
 
+    public void insertWithIndex(int value, int index) {
+        if (index <= 0 || index > size()) {
+            return;
+        }
+
+        Node newNode = new Node(value);
+        if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
+            if (size() == 0) {
+                tail = newNode;
+            }
+        } else if (index == size()) {
+            addQ(value);
+        } else {
+            Node temp = head;
+            int i = 0;
+            while (i < index - 1) {
+                temp = temp.getNext();
+                i++;
+            }
+            newNode.setNext(temp.getNext());
+            temp.setNext(newNode);
+        }
+    }
 
     public static void main(String[] args) {
         MyQueue myQueue = new MyQueue();
         myQueue.input();
         myQueue.output();
-        myQueue.removeQ();
+//        myQueue.removeQ();
+//        myQueue.output();
+//        System.out.println("\nSum of queue: " + myQueue.sum());
+//        myQueue.removeLast();
+        myQueue.insertWithIndex(100, 3);
         myQueue.output();
-        System.out.println("\nSum of queue: " + myQueue.sum());
     }
 }
