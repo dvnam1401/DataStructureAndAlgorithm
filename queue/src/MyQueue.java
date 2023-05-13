@@ -159,7 +159,7 @@ public class MyQueue {
 //        myQueue.output();
 //        System.out.println("\nSum of queue: " + myQueue.sum());
 //        myQueue.removeLast();
-        myQueue.insertWithIndex(100, 3);
+        myQueue.insertWithIndex(100, 5);
         myQueue.output();
     }
 }
