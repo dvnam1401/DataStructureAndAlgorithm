@@ -139,7 +139,7 @@ public class MyStack {
         if ((tempIndex = size()) > index) {
             while (!emptyS()) {
                 if (tempIndex == index) {
-                    top = new Node(value, top);
+                    push(value);
                     break;
                 }
                 TEMPNUMBER = pop();
