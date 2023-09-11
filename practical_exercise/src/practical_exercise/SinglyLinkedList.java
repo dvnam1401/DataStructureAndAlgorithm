@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package practical_exercise;
 
 import java.util.Scanner;
@@ -11,10 +7,6 @@ import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- *
- * @author vanna
- */
 class Node {
 
     public int data;
@@ -35,7 +27,7 @@ class LinkedList {
         this.head = null;
     }
 
-    public void addNode(int data) {
+    public void add(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -48,7 +40,7 @@ class LinkedList {
         }
     }
 
-    public void printList() {
+    public void display() {
         Node current = head;
         while (current != null) {
             System.out.print(current.data + " ");
@@ -57,7 +49,7 @@ class LinkedList {
         System.out.println();
     }
 
-    public int sumOddNumbers() {
+    public int sumOdd() {
         int sum = 0;
         Node current = head;
         while (current != null) {
@@ -69,7 +61,7 @@ class LinkedList {
         return sum;
     }
 
-    public double averageEvenNumbers() {
+    public double averageEven() {
         int count = 0;
         int sum = 0;
         Node current = head;
@@ -86,7 +78,7 @@ class LinkedList {
         return (double) sum / count;
     }
 
-    public int countElementsGreaterThan3() {
+    public int countGreaterThanThree() {
         int count = 0;
         Node current = head;
         while (current != null) {
@@ -98,7 +90,7 @@ class LinkedList {
         return count;
     }
 
-    public int countUniqueElements() {
+    public int countUniqueElement() {
         Set<Integer> uniqueElements = new HashSet<>();
         Node current = head;
         while (current != null) {
@@ -131,10 +123,10 @@ class LinkedList {
         while (current.next.next != null) {
             current = current.next;
         }
-        System.out.println("Second Last Node: " + current.next.data);
+        System.out.println("Second Last Node: " + current.data);
     }
 
-    public void reverseList() {
+    public void reverseLinkList() {
         Node prev = null;
         Node current = head;
         while (current != null) {
@@ -148,6 +140,7 @@ class LinkedList {
 }
 
 public class SinglyLinkedList {
+
     public static void main(String[] args) {
         File file = new File("src\\practical_exercise\\solieu.txt");
         try {
@@ -157,37 +150,36 @@ public class SinglyLinkedList {
             LinkedList linkedList = new LinkedList();
             for (int i = 0; i < n; i++) {
                 int data = scanner.nextInt();
-                linkedList.addNode(data);
+                linkedList.add(data);
             }
 
             System.out.print("Danh sach ban dau: ");
-            linkedList.printList();
+            linkedList.display();
 
-            int sumOdd = linkedList.sumOddNumbers();
+            int sumOdd = linkedList.sumOdd();
             System.out.println("Tong cac so le: " + sumOdd);
 
-            double averageEven = linkedList.averageEvenNumbers();
+            double averageEven = linkedList.averageEven();
             System.out.println("Trung binh cong cac so chan: " + averageEven);
 
-            int countGreaterThan3 = linkedList.countElementsGreaterThan3();
+            int countGreaterThan3 = linkedList.countGreaterThanThree();
             System.out.println("So phan tu lon hon 3: " + countGreaterThan3);
 
-            int countUnique = linkedList.countUniqueElements();
+            int countUnique = linkedList.countUniqueElement();
             System.out.println("So phan tu khac nhau: " + countUnique);
 
             linkedList.swapFirstAndLast();
             System.out.print("Danh sach sau khi hoan vi phan tu dau va phan tu cuoi: ");
-            linkedList.printList();
+            linkedList.display();
 
             linkedList.printSecondLastNode();
 
-            linkedList.reverseList();
+            linkedList.reverseLinkList();
             System.out.print("Danh sach sau khi dao nguoc: ");
-            linkedList.printList();
+            linkedList.display();
 
             scanner.close();
         } catch (FileNotFoundException e) {
         }
     }
 }
-
